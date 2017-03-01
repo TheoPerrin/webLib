@@ -2,11 +2,11 @@ package proj.dao;
 
 import proj.beans.Fichier;
 
-public interface FichierDao {
+public interface FichierDao<T> {
 	
-	void creer (Fichier fichier) throws DAOException; 
+	void creer (T t) throws DAOException; 
 	
-	Fichier trouver (String nom) throws DAOException;
+	T trouver (String nom) throws DAOException;
 	
 	boolean existe (String nom) throws DAOException;
 	

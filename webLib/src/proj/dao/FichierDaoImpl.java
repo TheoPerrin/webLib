@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 import proj.beans.Fichier;
 
-public class FichierDaoImpl implements FichierDao{
+public class FichierDaoImpl implements FichierDao<Fichier>{
 	
 	private DAOFactory daoFactory;
 	private static final String SQL_SELECT_PAR_NOM = "SELECT * FROM Fichier WHERE Nom = ?";
@@ -29,12 +29,6 @@ public class FichierDaoImpl implements FichierDao{
 		String description = fichier.getDescription();
 		String type = fichier.getType();
 		int statut; 
-		
-		System.out.println(nom);
-		System.out.println(description);
-		System.out.println(type);
-
-		
 		
 		Connection connexion = null;
     	PreparedStatement preparedStatement = null;
