@@ -24,6 +24,7 @@ public class connexion extends HttpServlet {
     public static final String BONJOUR          = "/WEB-INF/bonjour.jsp";
     public static final String CONNEXION        = "/WEB-INF/connexion.jsp";
     
+    
     private UtilisateurDao     utilisateurDao;
     
     public void init() throws ServletException {

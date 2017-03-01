@@ -61,13 +61,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="image/indexImage.png" width="200" height="200" alt="">
+                    <img class="img-responsive" src="image/indexImage.png" width="200" height="200">
                     <div class="intro-text">
                         <span class="name">Bienvenue sur notre webLib</span>
-                        <hr class="star-light">
-                        <span class="skills">Yoann Lespert et Théo Perrin</span>                                                                
+                        <hr class="star-light">                                                                
                     </div>
-                    <div>
+                    <div class="col-lg-12">
                     <a href="connexion" class="btn btn-lg btn-outline">
                         <i class="fa"></i> Se connecter
                     </a>

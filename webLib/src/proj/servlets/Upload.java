@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import proj.beans.Fichier;
+import proj.dao.DAOFactory;
+import proj.dao.FichierDao;
+import proj.dao.UtilisateurDao;
 import proj.forms.UploadForm;
 
 
@@ -18,6 +21,14 @@ public class Upload extends HttpServlet {
 	public static final String ATT_FICHIER = "fichier";
 	public static final String ATT_FORM    = "form";	
 	public static final String CHEMIN        = "chemin";
+	public static final String CONF_DAO_FACTORY = "daofactory";
+	
+	private FichierDao     fichierDao;
+	
+	public void init() throws ServletException {
+        /* Récupération d'une instance de notre DAO Fichier */
+        this.fichierDao = ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getFichierDao();
+    }
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/* Affichage de la page d'envoi de fichiers */
@@ -32,7 +43,7 @@ public class Upload extends HttpServlet {
         String chemin = this.getServletConfig().getInitParameter( CHEMIN );
 
         /* Préparation de l'objet formulaire */
-        UploadForm form = new UploadForm();
+        UploadForm form = new UploadForm( fichierDao );
 
         /* Traitement de la requête et récupération du bean en résultant */
         Fichier fichier = form.enregistrerFichier( request, chemin );

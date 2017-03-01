@@ -32,9 +32,9 @@
         
             <!-- Brand and toggle se regroupent pour un meilleur affichage mobile -->
             <div class="navbar-header page-scroll">
-                <!--button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button-->
+                </button>
                 <a class="navbar-brand" href="#page-top">WebLib</a>
             </div>
 
@@ -72,7 +72,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <span class="name">${sessionScope.sessionUtilisateur.login}</span>
                         <span> <h1>Partage avec nous tes fichiers !</h1> </span>
                         <hr class="star-light">
                     </div>
@@ -94,7 +93,7 @@
 							<td width="30%"></td>
                  		</tr>
                  		<tr>
-                 			<td><label for="description">Veuillez indiquer l'Auteur / Réalisateur / Artiste</label></td>
+                 			<td><label for="description">Description</label></td>
                  			<td><input type="text" class="form-control" id="description" name="description" value="<c:out value="${fichier.description}"/>" /></td>
                  			<td><span class="erreur">${form.erreurs['description']}</span></td>
                  		</tr>
@@ -108,7 +107,9 @@
                  			<td><input type="submit" class="btn btn btn-success2" value="Envoyer" class="sansLabel" /></td>
                  			<td><p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p></td>
                  		<tr>
-
+							<td>
+							
+							</td>
                  		</tr>
                  		</table>
                  </div>

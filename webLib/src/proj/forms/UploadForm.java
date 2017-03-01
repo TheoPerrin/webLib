@@ -14,17 +14,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
 import proj.beans.Fichier;
-import proj.beans.Utilisateur;
+import proj.dao.FichierDao;
+
 
 public class UploadForm {
 	
 	private static final String CHAMP_DESCRIPTION = "description";
     private static final String CHAMP_FICHIER     = "fichier";
-    private static final String CHAMP_TYPE     = "type";
+    private static final String CHAMP_TYPE     	  = "type";
     private static final int    TAILLE_TAMPON     = 10240;
     
     private String              resultat;
     private Map<String, String> erreurs           = new HashMap<String, String>();
+    
+    private FichierDao      fichierDao;
     
     public String getResultat() {
         return resultat;
@@ -34,18 +37,20 @@ public class UploadForm {
         return erreurs;
     }
     
-    public Fichier enregistrerFichier( HttpServletRequest request, String chemin ) {
+    public UploadForm( FichierDao fichierDao ) {
+        this.fichierDao = fichierDao;
+    }
+    
+  
+	public Fichier enregistrerFichier( HttpServletRequest request, String chemin ) {
         /* Initialisation du bean représentant un fichier */
         Fichier fichier = new Fichier();
 
         /* Récupération du champ de description du formulaire et du Type de fichier*/
         String description = getValeurChamp( request, CHAMP_DESCRIPTION );
         String type = getValeurChamp(request, CHAMP_TYPE);
-        /*
-        Utilisateur utilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
-        String login=utilisateur.getLogin();
-        System.out.println(login);
-		*/
+ 
+ 
         /*
          * Récupération du contenu du champ fichier du formulaire. Il faut ici
          * utiliser la méthode getPart(), comme nous l'avions fait dans notre
@@ -132,6 +137,14 @@ public class UploadForm {
             }
             fichier.setNom( nomFichier );
         }
+        
+        /*Création du fichier dans la base de donnée */
+        if ( erreurs.isEmpty() ) {
+        	try {
+        		fichierDao.creer(fichier);
+        	} catch (Exception e){ setErreur(CHAMP_FICHIER, "Erreur lors de la création dans la base de donnée ");
+        		}
+        }
 
         /* Si aucune erreur n'est survenue jusqu'à présent */
         if ( erreurs.isEmpty() ) {
@@ -142,7 +155,7 @@ public class UploadForm {
                 setErreur( CHAMP_FICHIER, "Erreur lors de l'écriture du fichier sur le disque." );
             }
         }
-
+        
         /* Initialisation du résultat global de la validation. */
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de l'envoi du fichier.";

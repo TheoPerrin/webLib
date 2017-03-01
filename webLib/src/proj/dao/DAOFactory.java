@@ -59,6 +59,10 @@ public class DAOFactory {
         return new UtilisateurDaoImpl( this );
     }
     
+    public FichierDao getFichierDao(){
+    	return new FichierDaoImpl( this );
+    }
+    
     /*
      * Initialise la requête préparée basée sur la connexion passée en argument,
      * avec la requête SQL et les objets donnés.
