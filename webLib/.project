@@ -28,21 +28,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>WebContent/videos/FMF.mp4</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/upload/FMF.mp4</locationURI>
-		</link>
-		<link>
-			<name>WebContent/videos/MK.mp4</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/upload/MK.mp4</locationURI>
-		</link>
-		<link>
-			<name>WebContent/videos/TGBH.mp4</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/upload/TGBH.mp4</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

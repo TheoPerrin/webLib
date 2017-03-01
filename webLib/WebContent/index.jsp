@@ -71,6 +71,8 @@
                     <a href="connexion" class="btn btn-lg btn-outline">
                         <i class="fa"></i> Se connecter
                     </a>
+                    <p class="${empty mailForm.erreurs ? 'text-success' : 'text-danger'}">${mailForm.resultat}</p>
+                    <a class="text-danger" href="index.jsp#contact">	${mailForm.erreurs['destinataire']}</a>
                     </div>
                 </div>
             </div>
@@ -94,21 +96,21 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Nom</label>
-                                <input type="text" class="form-control" placeholder="Nom" id="name" name="name" required data-validation-required-message="Veuillez entrer votre nom">
+                                <input type="text" class="form-control" placeholder="Nom" name="name">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Adresse mail</label>
-                                <input type="email" class="form-control" placeholder="Adresse mail" id="email" name="email" required data-validation-required-message="Veuillez entrer votre mail">
+                                <input type="email" class="form-control" placeholder="Adresse mail" name="email">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Message</label>
-                                <input class="form-control" placeholder="Message" id="message" name ="message" required data-validation-required-message="Please enter a message.">
+                                <input class="form-control" placeholder="Message" name ="message">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>

@@ -27,11 +27,11 @@
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
         
-            <!-- Brand and toggle se regroupent pour un meilleur affichage mobile -->
+             <!-- Brand and toggle se regroupent pour un meilleur affichage mobile -->
             <div class="navbar-header page-scroll">
-                <!--button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button-->
+                </button>
                 <a class="navbar-brand" href="#page-top">WebLib</a>
             </div>
 

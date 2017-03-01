@@ -28,6 +28,9 @@ public class envoyerMail extends HttpServlet {
 		/*Envoi d'un mail*/
 		mailForm.envoyer(request);
 		
+		/*enregistrement du résultat*/
+		request.setAttribute( "mailForm", mailForm );
+		
 		/*Envoi de la réponse */
 		this.getServletContext().getRequestDispatcher( CONTACT ).forward( request, response );
 
