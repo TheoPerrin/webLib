@@ -42,6 +42,9 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
+                        <a href="fiche">Toi :)</a>
+                    </li>
+                    <li class="page-scroll">
                         <a href="#nouveautes">Nouveautés</a>
                     </li>
                     <li class="page-scroll">

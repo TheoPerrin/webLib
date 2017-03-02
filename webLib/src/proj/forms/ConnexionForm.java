@@ -56,6 +56,14 @@ public final class ConnexionForm {
         /* Initialisation du résultat global de la validation. */
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de la connexion.";
+            utilisateur=utilisateurDao.trouver(login);
+        	utilisateur.getLogin();
+        	utilisateur.getEmail();
+        	utilisateur.getAdresse();
+        	utilisateur.getNom();
+        	utilisateur.getPrenom();
+        	utilisateur.getVille();
+        	utilisateur.getCodePostal();
             
             
         } else {
