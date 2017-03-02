@@ -15,6 +15,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	private static final String SQL_SELECT_PAR_LOGIN = "SELECT * FROM repertoire WHERE Login = ?";
 	private static final String SQL_INSERT_UTILISATEUR = "INSERT INTO repertoire VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	private static final String SQL_EXIST_LOGIN = "SELECT * FROM repertoire WHERE Login = ? ";
+	private static final String SQL_UPDATE_UTILISATEUR ="UPDATE repertoire SET Login = ?, Adresse = ?, Email = ?, Cp= ?, Ville = ? WHERE Login=?";
 	
 	
 	/*Constructeur*/
@@ -117,5 +118,32 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
     	return existe;
     }
     
+    @Override
+    public void modifier( Utilisateur utilisateur, String login ) throws DAOException{
+    	String 	login1 			= utilisateur.getLogin();
+    	String 	motDePasse 		= utilisateur.getMdp();
+    	String  email 			= utilisateur.getEmail();
+    	String  adresse 		= utilisateur.getAdresse();
+    	int 	codePostal		= utilisateur.getCodePostal();
+    	String 	ville 			= utilisateur.getVille(); 	
+    	int 			   statut;
+    	
+    	Connection connexion = null; 
+	    PreparedStatement preparedStatement = null; 
+	     
+	    try{
+	    	connexion = daoFactory.getConnection();
+	    	preparedStatement = DAOFactory.initialisationRequetePreparee(connexion, SQL_UPDATE_UTILISATEUR, false, login, adresse, email, codePostal, ville, login1);
+	    	statut = preparedStatement.executeUpdate();
+	    	if (statut==0){System.out.println("ok");};
+	    } 	catch ( SQLException e ) {
+        	throw new DAOException( e );
+		  	}
+				finally {
+				fermeturesSilencieuses( preparedStatement, connexion );
+				}  
+	 
+	    
+    }
 	
 }

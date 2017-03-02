@@ -8,4 +8,6 @@ public interface UtilisateurDao {
 	    Utilisateur trouver( String login ) throws DAOException;
 	    
 	    boolean existe (String login) throws DAOException;
+	    
+	    void modifier( Utilisateur utilisateur, String login ) throws DAOException;
 }
