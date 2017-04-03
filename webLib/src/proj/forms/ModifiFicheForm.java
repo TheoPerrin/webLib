@@ -6,13 +6,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.jasypt.util.password.ConfigurablePasswordEncryptor;
+
 import proj.beans.Utilisateur;
 import proj.dao.UtilisateurDao;
 
 public class ModifiFicheForm{
 	
 	public static final String CHAMP_EMAIL 	= "email";
-	public static final String CHAMP_LOGIN	= "login";
     public static final String CHAMP_ADRESSE= "adresse";
     public static final String CHAMP_CP		= "codePostal";
     public static final String CHAMP_VILLE 	= "ville";
@@ -45,7 +46,6 @@ public class ModifiFicheForm{
     	//Récupération du login de session
 		HttpSession session= request.getSession();
         user=(Utilisateur)session.getAttribute("sessionUtilisateur");
-        String log=user.getLogin();
         String mail=user.getEmail();
         String city=user.getVille();
         String ad=user.getAdresse();
@@ -54,34 +54,15 @@ public class ModifiFicheForm{
 
 
         //Récupération des champs du formulaire
-    	String login = getValeurChamp( request, CHAMP_LOGIN );
     	String email = getValeurChamp( request, CHAMP_EMAIL );
     	String ville = getValeurChamp( request, CHAMP_VILLE );
         String codePostal =getValeurChamp( request, CHAMP_CP );
         String adresse = getValeurChamp( request, CHAMP_ADRESSE );
         
         
-        //Récupération des données de l'utilisateur courant
-       /* utilisateur=utilisateurDao.trouver(log);
-    	
-        String parameterValue1=utilisateur.getLogin();
-        String parameterValue3=utilisateur.getEmail();
-        String parameterValue4=utilisateur.getAdresse();
-        String parameterValue5=String.valueOf(utilisateur.getCodePostal());
-        String parameterValue6=utilisateur.getVille();
-        */
-        
         
         //Traitement des informations
-        
-        
-        
-      if(login!=null){
-    	  if(login.compareTo("")==0){login=log;}
-      }
-      else {login=log;}
-      
-      if(email!=null){
+     if(email!=null){
     	  if(email.compareTo("")==0){email=mail;}
       }
       
@@ -105,18 +86,16 @@ public class ModifiFicheForm{
       
       
       traiterEmail(email);
-      traiterLogin(login);
       traiterCodePostal(codePostal);
       
       if (erreurs.isEmpty()){
     	  resultat="OK";
-    	  utilisateur.setLogin(login);
     	  utilisateur.setLogin(email);
     	  utilisateur.setLogin(adresse);
     	  utilisateur.setLogin(codePostal);
     	  utilisateur.setLogin(ville);
     	  
-          utilisateurDao.modifier(user,login);
+          utilisateurDao.modifier(user);
           
           return utilisateur;
       }
@@ -205,33 +184,7 @@ public class ModifiFicheForm{
     	    		throw new FormValidationException( "Merci de saisir un code postal valide" );
     	    	}
         }
-        
-        /**
-         * Traite le login d'utilisateur saisi.
-         */
-        private void traiterLogin ( String login) {
-            try {
-                validationLogin(login);
-            } catch ( FormValidationException e ) {
-                setErreur( CHAMP_LOGIN, e.getMessage() );
-            }
-           
-        }
-        
-        
-        /**
-         * Valide le nom d'utilisateur saisi.
-         */
-        private void validationLogin( String login ) throws FormValidationException {
-        	
-        	if (login == null){
-        		throw new FormValidationException( "Le login doit contenir au moins 3 caractÃ¨res." );
-        	}	else if ( login != null && login.trim().length() < 3 ) {
-                	throw new FormValidationException( "Le login doit contenir au moins 3 caractÃ¨res." );
-            	} 	else if (utilisateurDao.existe(login)){
-            			throw new FormValidationException( "Le login est dÃ©jÃ  utilisÃ©" );
-            		}
-        }
-        
+
+ 
 
 }

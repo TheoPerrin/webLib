@@ -50,16 +50,6 @@
             	
             	<form method="post" action="modifiFiche">
             	<table class="table">
-            		
-            		
-            		
-            		<tr>
-            			<td><label for="login">Nouveau Login </label></td>
-            			<td><input type="text" class="form-control" id="login" name="login" value="" size="20" minlength="3" maxlength="20" /></td>
-            			<td><div class="erreur">${form.erreurs['login']}</div></td>           		
-            		</tr>
-            		
-            		
             		<tr>
             			<td><label for="email">Adresse email </label></td>
             			<td><input type="text" class="form-control" id="email" name="email" value="" size="20" maxlength="60" /></td>

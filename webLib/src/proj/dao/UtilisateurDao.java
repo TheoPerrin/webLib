@@ -9,5 +9,5 @@ public interface UtilisateurDao {
 	    
 	    boolean existe (String login) throws DAOException;
 	    
-	    void modifier( Utilisateur utilisateur, String login ) throws DAOException;
+	    void modifier( Utilisateur utilisateur) throws DAOException;
 }

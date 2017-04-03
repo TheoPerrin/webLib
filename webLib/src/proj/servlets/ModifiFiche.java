@@ -70,18 +70,6 @@ public class ModifiFiche extends HttpServlet {
             this.getServletContext().getRequestDispatcher( MODIF_FICHE ).forward( request, response );
         }
 
-
-//		request.setAttribute( ATT_FORM, form );
-//        request.setAttribute( ATT_USER, utilisateur );
-//        
-//        if ( session.getAttribute( ATT_SESSION_USER ) == null ) {
-//            /* Redirection vers la page modif */
-//        	this.getServletContext().getRequestDispatcher( MODIF_FICHE ).forward( request, response );
-//        } else {
-//            /* Affichage de la page fiche avec les modifs effectuées*/
-//        	
-//            this.getServletContext().getRequestDispatcher( FICHE ).forward( request, response );
-//          }
 	}
 
 }
