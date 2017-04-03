@@ -71,11 +71,64 @@
     <header>
         <div class="container">
             <div class="row">
+            	<div class="intro-text">                      
+                        <span> <h1>Musiques</h1> </span>
+                        <hr class="star-light">
+              	</div>
             	<div class="col-lg-12">
             		<table class="table">
 	            		<tr>
-	            			 <td><label for="nom">Bientôt les musiques de ${sessionScope.sessionUtilisateur.prenom}</label></td>		
+	            			<td width="20%"><h4>rap deadpool</h4>
+                 			<img class="img-responsive" src="image/musiques/deadpoolrap.jpg" width="200" height="200" alt=""></td>
+                 			<td width="30%">
+	                 			<a href="http://localhost:8080/webLib/fichiers/deadpool1.mp3" class="btn btn-xs btn-outline">
+	                        	<i class="fa fa-download"></i> Télécharger le son
+	                    		</a>
+	                    		<br/>
+	                    		<br/>
+                 				<a class="ref">play</a>    
+                 				<br/>
+                 				<br/>
+                 				<audio src="musiques/deadpool1.mp3" controls width="200" height="200"></audio>           				
+                 			</td>
+                 			<td width="50%"><h4>Description</h4>
+                 			</td>
 	            		</tr>
+	            		<tr>
+	            			<td width="20%"><h4>shoop-salt-n-pepa</h4>
+                 			<img class="img-responsive" src="image/musiques/shoop_deadpool.jpg" width="200" height="200" alt=""></td>
+                 			<td width="30%">
+	                 			<a href="http://localhost:8080/webLib/fichiers/deadpool2.mp3" class="btn btn-xs btn-outline">
+	                        	<i class="fa fa-download"></i> Télécharger le son
+	                    		</a>
+	                    		<br/>
+	                    		<br/>
+                 				<a class="ref">play</a>    
+                 				<br/>
+                 				<br/>
+                 				<audio src="musiques/deadpool2.mp3" controls width="200" height="200"></audio>           				
+                 			</td>
+                 			<td width="50%"><h4>Description</h4>
+                 			</td>
+	            		</tr>
+	            		<tr>
+	            			<td width="20%"><h4>François Pérusse</h4>
+                 			<img class="img-responsive" src="image/musiques/les2min.jpg" width="200" height="200" alt=""></td>
+                 			<td width="30%">
+	                 			<a href="http://localhost:8080/webLib/fichiers/Achat d'un ordinateur.mp3" class="btn btn-xs btn-outline">
+	                        	<i class="fa fa-download"></i> Télécharger le son
+	                    		</a>
+	                    		<br/>
+	                    		<br/>
+                 				<a class="ref">play</a>    
+                 				<br/>
+                 				<br/>
+                 				<audio src="musiques/Achat d'un ordinateur.mp3" controls width="200" height="200"></audio>           				
+                 			</td>
+                 			<td width="50%"><h4>Description</h4>
+                 			</td>
+	            		</tr>
+	            		
 	            	 </table>
 
              </div>
