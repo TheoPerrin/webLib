@@ -97,10 +97,10 @@
     <servlet-class>proj.servlets.Upload</servlet-class>
     <init-param>
       <param-name>chemin</param-name>
-      <param-value>/Users/PerrinTheo/Documents/workspaceWeb/upload/</param-value>
+      <param-value>/Users/yoann/Documents/workspaceWeb/upload/</param-value>
     </init-param>
     <multipart-config>
-      <location>/Users/PerrinTheo/Documents</location>
+      <location>/Users/yoann/Documents</location>
       <max-file-size>10485760</max-file-size>
       <max-request-size>52428800</max-request-size>
       <file-size-threshold>1048576</file-size-threshold>
@@ -115,7 +115,7 @@
     <servlet-class>proj.servlets.Download</servlet-class>
     <init-param>
       <param-name>chemin</param-name>
-      <param-value>/Users/PerrinTheo/Documents/workspaceWeb/upload/</param-value>
+      <param-value>/Users/yoann/Documents/workspaceWeb/download/</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
