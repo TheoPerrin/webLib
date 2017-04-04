@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Bonjour</title>
+<title>Partager</title>
 
 <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,6 +45,9 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
+                        <a href="fiche"><img class="img-responsive" src="image/profile5.png" width="40" height="40" alt="" title="profile"></a>
+                    </li>
+                    <li class="page-scroll">
                         <a href="video">Vidéos</a>
                     </li>
                     <li class="page-scroll">
@@ -57,7 +60,7 @@
                         <a href="upload">Partager</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="deconnexion">Se déconnecter</a>
+                        <a href="deconnexion"><img class="img-responsive" src="image/logout2.jpg" width="40" height="40" alt="" title="se deconnecter"></a>
                     </li>
                 </ul>
             </div>

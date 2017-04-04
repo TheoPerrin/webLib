@@ -26,9 +26,9 @@
         
             <!-- Brand and toggle se regroupent pour un meilleur affichage mobile -->
             <div class="navbar-header page-scroll">
-                <!--button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button-->
+                </button>
                 <a class="navbar-brand" href="#page-top">WebLib</a>
                 
             </div>
@@ -40,10 +40,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="fiche">Toi :)</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#nouveautes">Nouveautés</a>
+                        <a href="fiche"><img class="img-responsive" src="image/profile5.png" width="40" height="40" alt="" title="profile"></a>
                     </li>
                     <li class="page-scroll">
                         <a href="video">Vidéos</a>
@@ -58,7 +55,7 @@
                         <a href="upload">Partager</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="deconnexion">Se déconnecter</a>
+                        <a href="deconnexion"><img class="img-responsive" src="image/logout2.jpg" width="40" height="40" alt="" title="se deconnecter"></a>
                     </li>
                 </ul>
             </div>
@@ -76,12 +73,13 @@
                         <hr class="star-light">
               	</div>
             	<div class="col-lg-12">
+            		
             		<table class="table">
 	            		<tr>
 	            			<td width="20%"><h4>rap deadpool</h4>
                  			<img class="img-responsive" src="image/musiques/deadpoolrap.jpg" width="200" height="200" alt=""></td>
                  			<td width="30%">
-	                 			<a href="http://localhost:8080/webLib/fichiers/deadpool1.mp3" class="btn btn-xs btn-outline">
+	                 			<a href="http://localhost:8080/webLib/musiques/deadpool1.mp3" download="rapDeadpool.mp3" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger le son
 	                    		</a>
 	                    		<br/>
@@ -98,7 +96,7 @@
 	            			<td width="20%"><h4>shoop-salt-n-pepa</h4>
                  			<img class="img-responsive" src="image/musiques/shoop_deadpool.jpg" width="200" height="200" alt=""></td>
                  			<td width="30%">
-	                 			<a href="http://localhost:8080/webLib/fichiers/deadpool2.mp3" class="btn btn-xs btn-outline">
+	                 			<a href="http://localhost:8080/webLib/musiques/deadpool2.mp3" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger le son
 	                    		</a>
 	                    		<br/>
@@ -115,7 +113,7 @@
 	            			<td width="20%"><h4>François Pérusse</h4>
                  			<img class="img-responsive" src="image/musiques/les2min.jpg" width="200" height="200" alt=""></td>
                  			<td width="30%">
-	                 			<a href="http://localhost:8080/webLib/fichiers/Achat d'un ordinateur.mp3" class="btn btn-xs btn-outline">
+	                 			<a href="http://localhost:8080/webLib/musiques/Achat d'un ordinateur.mp3" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger le son
 	                    		</a>
 	                    		<br/>
@@ -142,6 +140,18 @@
       </div>
     </header>
     
+     <!-- Footer -->
+    <footer class="text-center">  
+    <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Yoann & Théo WebLib 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
  <!-- jQuery -->
  <script src="vendor/jquery/jquery.min.js"></script>
 

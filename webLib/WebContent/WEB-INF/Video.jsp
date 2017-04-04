@@ -9,7 +9,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Bonjour</title>
+<title>Vidéos</title>
 
 <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 
 </head>
 
-    <body>
+    <body id="page-top" class="index">
     
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -45,6 +45,9 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
+                    	<a href="fiche"><img class="img-responsive" src="image/profile5.png" width="40" height="40" alt="" title="profile"></a><
+                    </li>
+                    <li class="page-scroll">
                         <a href="video">Vidéos</a>
                     </li>
                     <li class="page-scroll">
@@ -57,7 +60,7 @@
                         <a href="upload">Partager</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="deconnexion">Se déconnecter</a>
+                        <a href="deconnexion"><img class="img-responsive" src="image/logout2.jpg" width="40" height="40" alt="" title="se deconnecter"></a>
                     </li>
                 </ul>
             </div>
@@ -85,7 +88,7 @@
                  			<td width="20%"><h4>Moonrise Kingdom</h4>
                  			<img class="img-responsive" src="image/videos/MK.jpg" width="200" height="200" alt=""></td>
                  			<td width="30%">
-	                 			<a href="http://localhost:8080/webLib/fichiers/MK.mp4" class="btn btn-xs btn-outline">
+	                 			<a href="http://localhost:8080/webLib/videos/MK.mp4" download="MK.mp4" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger le film
 	                    		</a>
 	                    		<br/>
@@ -182,6 +185,5 @@
  <!-- Theme JavaScript -->
  <script src="js/freelancer.min.js"></script>               
                       
-        </form>
     </body>
 </html>

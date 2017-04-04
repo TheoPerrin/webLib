@@ -40,10 +40,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="fiche">Toi :)</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#nouveautes">Nouveautés</a>
+                        <a href="fiche"><img class="img-responsive" src="image/profile5.png" width="40" height="40" alt="" title="profile"></a>
                     </li>
                     <li class="page-scroll">
                         <a href="video">Vidéos</a>
@@ -58,7 +55,7 @@
                         <a href="upload">Partager</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="deconnexion">Se déconnecter</a>
+                        <a href="deconnexion"><img class="img-responsive" src="image/logout2.jpg" width="40" height="40" alt="" title="se deconnecter"></a>
                     </li>
                 </ul>
             </div>
@@ -73,11 +70,12 @@
             <div class="row">
             <div class="col-lg-12">
                     <div class="intro-text">                      
-                        <span> <h1>Photos</h1> </span>
+                        <span><h1>Photos</h1></span>
                         <hr class="star-light">
                     </div>
                 </div>
             	<div class="col-lg-12">
+            	
             		<table class="table">
 	            		<tr>
 	            			<td width="20%"><h4>deadpool</h4>
@@ -85,14 +83,12 @@
                  			onmouseout="javascript:this.src='image/wallpaper/reduite/deadpool_petite.jpg'" 
                  			onmouseover="javascript:this.src='image/wallpaper/agrandi/deadpool_grande.jpg'" class="CtreTexte" /></td>
                  			<td width="30%">
-                 			<br>
-                 			</br>
-                 			<br>
-                 			</br>
-	                 			<a href="http://localhost:8080/webLib/fichiers/deadpool.jpg" class="btn btn-xs btn-outline">
+                 			<br/>
+                 			<br/>
+	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/deadpool.jpg" download="deadpool.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
-	                    		</a>      				
-                 			</td>
+	                    		</a>  
+	                    		</td>
                  			<td width="50%"><h4>Description</h4>
                  			</td>		
 	            		</tr>
@@ -102,13 +98,12 @@
                  			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel_petite.jpg'" 
                  			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel_grande.jpg'" class="CtreTexte" /></td>
                  			<td width="30%">
-                 			<br>
-                 			</br>
-                 			<br>
-                 			</br>
-	                 			<a href="http://localhost:8080/webLib/fichiers/marvel.jpg" class="btn btn-xs btn-outline">
+                 			<br/>
+                 			<br/>
+	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/marvel.jpg" download="marvel.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
-	                    		</a>      				
+	                    		</a>
+	                    		    				
                  			</td>
                  			<td width="50%"><h4>Description</h4>
                  			</td>		
@@ -119,11 +114,9 @@
                  			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel2_petite.jpg'" 
                  			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel2_grande.jpg'" class="CtreTexte" /></td>
                  			<td width="30%">
-                 			<br>
-                 			</br>
-                 			<br>
-                 			</br>
-	                 			<a href="http://localhost:8080/webLib/fichiers/marvel2.jpg" class="btn btn-xs btn-outline">
+                 			<br/>
+                 			<br/>
+	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/marvel2.jpg" download="marvel2.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
 	                    		</a>      				
                  			</td>
@@ -136,11 +129,9 @@
                  			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel3_petite.jpg'" 
                  			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel3_grande.jpg'" class="CtreTexte" /></td>
                  			<td width="30%">
-                 			<br>
-                 			</br>
-                 			<br>
-                 			</br>
-	                 			<a href="http://localhost:8080/webLib/fichiers/marvel3.jpg" class="btn btn-xs btn-outline">
+                 			<br/>
+                 			<br/>
+	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/marvel3.jpg" download="marvel3.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
 	                    		</a>      				
                  			</td>
@@ -153,11 +144,9 @@
                  			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel4_petite.jpg'" 
                  			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel4_grande.jpg'" class="CtreTexte" /></td>
                  			<td width="30%">
-                 			<br>
-                 			</br>
-                 			<br>
-                 			</br>
-	                 			<a href="http://localhost:8080/webLib/fichiers/marvel4.jpg" class="btn btn-xs btn-outline">
+                 			<br/>
+                 			<br/>
+	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/marvel4.jpg" download="marvel4.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
 	                    		</a>      				
                  			</td>
@@ -177,6 +166,18 @@
       </div>
     </header>
     
+     <!-- Footer -->
+    <footer class="text-center">  
+    <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Yoann & Théo WebLib 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
  <!-- jQuery -->
  <script src="vendor/jquery/jquery.min.js"></script>
 

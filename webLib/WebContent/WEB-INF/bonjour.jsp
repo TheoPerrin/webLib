@@ -42,7 +42,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="fiche">Toi :)</a>
+                        <a href="fiche"><img class="img-responsive" src="image/profile5.png" width="40" height="40" alt="" title="profile"></a>
                     </li>
                     <li class="page-scroll">
                         <a href="#nouveautes">Nouveautés</a>
@@ -60,7 +60,7 @@
                         <a href="upload">Partager</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="deconnexion">Se déconnecter</a>
+                        <a href="deconnexion"><img class="img-responsive" src="image/logout2.jpg" width="40" height="40" alt="" title="se deconnecter"></a>
                     </li>
                 </ul>
             </div>
