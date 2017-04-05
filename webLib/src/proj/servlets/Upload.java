@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import proj.beans.Fichier;
 import proj.dao.DAOFactory;
@@ -30,8 +31,14 @@ public class Upload extends HttpServlet {
     }
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* Affichage de la page d'envoi de fichiers */
-		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+		HttpSession session= request.getSession();
+		if ( session.getAttribute("sessionUtilisateur" ) == null ) {
+            /* Redirection vers la page d'accueil */
+        	this.getServletContext().getRequestDispatcher("/index.jsp").forward( request, response );
+        } else {
+            /* Affichage de la page restreinte */
+            this.getServletContext().getRequestDispatcher(VUE).forward( request, response );
+          }
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
