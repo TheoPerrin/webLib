@@ -36,7 +36,13 @@ public class ModifiFiche extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
-		this.getServletContext().getRequestDispatcher( MODIF_FICHE ).forward( request, response );
+		if ( session.getAttribute(ATT_SESSION_USER) == null ) {
+            /* Redirection vers la page d'accueil */
+        	this.getServletContext().getRequestDispatcher("/index.jsp").forward( request, response );
+        } else {
+            /* Affichage de la page restreinte */
+            this.getServletContext().getRequestDispatcher(MODIF_FICHE).forward( request, response );
+          }
 	}
 
 	/**

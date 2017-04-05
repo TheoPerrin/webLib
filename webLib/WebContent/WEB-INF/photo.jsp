@@ -83,8 +83,8 @@
                  			onmouseout="javascript:this.src='image/wallpaper/reduite/deadpool_petite.jpg'" 
                  			onmouseover="javascript:this.src='image/wallpaper/agrandi/deadpool_grande.jpg'" class="CtreTexte" /></td>
                  			<td width="30%">
-                 			<br/>
-                 			<br/>
+	                 			<br/>
+	                 			<br/>
 	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/deadpool.jpg" download="deadpool.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
 	                    		</a>  
@@ -94,12 +94,12 @@
 	            		</tr>
 	            		<tr>
 	            			<td width="20%"><h4>marvel</h4>
-                 			<img src="image/wallpaper/reduite/marvel_petite.jpg" 
-                 			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel_petite.jpg'" 
-                 			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel_grande.jpg'" class="CtreTexte" /></td>
-                 			<td width="30%">
-                 			<br/>
-                 			<br/>
+	                 			<img src="image/wallpaper/reduite/marvel_petite.jpg" 
+	                 			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel_petite.jpg'" 
+	                 			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel_grande.jpg'" class="CtreTexte" /></td>
+	                 		<td width="30%">
+	                 			<br/>
+	                 			<br/>
 	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/marvel.jpg" download="marvel.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
 	                    		</a>
@@ -110,12 +110,12 @@
 	            		</tr>
 	            		<tr>
 	            			<td width="20%"><h4>marvel</h4>
-                 			<img src="image/wallpaper/reduite/marvel2_petite.jpg" 
-                 			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel2_petite.jpg'" 
-                 			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel2_grande.jpg'" class="CtreTexte" /></td>
+	                 			<img src="image/wallpaper/reduite/marvel2_petite.jpg" 
+	                 			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel2_petite.jpg'" 
+	                 			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel2_grande.jpg'" class="CtreTexte" /></td>
                  			<td width="30%">
-                 			<br/>
-                 			<br/>
+	                 			<br/>
+	                 			<br/>
 	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/marvel2.jpg" download="marvel2.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
 	                    		</a>      				
@@ -125,12 +125,12 @@
 	            		</tr>
 	            		<tr>
 	            			<td width="20%"><h4>marvel</h4>
-                 			<img src="image/wallpaper/reduite/marvel3_petite.jpg" 
-                 			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel3_petite.jpg'" 
-                 			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel3_grande.jpg'" class="CtreTexte" /></td>
-                 			<td width="30%">
-                 			<br/>
-                 			<br/>
+	                 			<img src="image/wallpaper/reduite/marvel3_petite.jpg" 
+	                 			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel3_petite.jpg'" 
+	                 			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel3_grande.jpg'" class="CtreTexte" /></td>
+	                 		<td width="30%">
+	                 			<br/>
+	                 			<br/>
 	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/marvel3.jpg" download="marvel3.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
 	                    		</a>      				
@@ -140,12 +140,12 @@
 	            		</tr>
 	            		<tr>
 	            			<td width="20%"><h4>marvel</h4>
-                 			<img src="image/wallpaper/reduite/marvel4_petite.jpg" 
-                 			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel4_petite.jpg'" 
-                 			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel4_grande.jpg'" class="CtreTexte" /></td>
-                 			<td width="30%">
-                 			<br/>
-                 			<br/>
+	                 			<img src="image/wallpaper/reduite/marvel4_petite.jpg" 
+	                 			onmouseout="javascript:this.src='image/wallpaper/reduite/marvel4_petite.jpg'" 
+	                 			onmouseover="javascript:this.src='image/wallpaper/agrandi/marvel4_grande.jpg'" class="CtreTexte" /></td>
+	                 		<td width="30%">
+	                 			<br/>
+	                 			<br/>
 	                 			<a href="http://localhost:8080/webLib/image/wallpaper/normale/marvel4.jpg" download="marvel4.jpg" class="btn btn-xs btn-outline">
 	                        	<i class="fa fa-download"></i> Télécharger l'image
 	                    		</a>      				

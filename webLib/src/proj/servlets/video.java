@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class video extends HttpServlet {
@@ -15,7 +16,14 @@ public class video extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+		HttpSession session=request.getSession();
+		if ( session.getAttribute("sessionUtilisateur" ) == null ) {
+            /* Redirection vers la page d'accueil */
+        	this.getServletContext().getRequestDispatcher("/index.jsp").forward( request, response );
+        } else {
+            /* Affichage de la page restreinte */
+            this.getServletContext().getRequestDispatcher(VUE).forward( request, response );
+          }
 	}
 
 }

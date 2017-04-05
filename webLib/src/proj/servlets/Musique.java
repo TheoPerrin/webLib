@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Musique extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -13,8 +14,14 @@ public class Musique extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		this.getServletContext().getRequestDispatcher( MUSIC ).forward( request, response );
+		HttpSession session=request.getSession();
+		if ( session.getAttribute("sessionUtilisateur" ) == null ) {
+            /* Redirection vers la page d'accueil */
+        	this.getServletContext().getRequestDispatcher("/index.jsp").forward( request, response );
+        } else {
+            /* Affichage de la page restreinte */
+            this.getServletContext().getRequestDispatcher(MUSIC).forward( request, response );
+          }
 	}
 
 }
