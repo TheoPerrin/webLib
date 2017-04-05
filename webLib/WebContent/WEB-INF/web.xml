@@ -110,6 +110,14 @@
     <servlet-name>Upload</servlet-name>
     <url-pattern>/upload</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>UploadRedirection</servlet-name>
+    <servlet-class>proj.servlets.UploadRedirection</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadRedirection</servlet-name>
+    <url-pattern>/UploadRedirection</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>Download</servlet-name>
     <servlet-class>proj.servlets.Download</servlet-class>

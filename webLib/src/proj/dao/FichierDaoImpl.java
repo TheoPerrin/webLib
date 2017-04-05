@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import proj.beans.Descriptif;
 import proj.beans.Fichier;
 
 public class FichierDaoImpl implements FichierDao<Fichier>{
@@ -16,7 +17,7 @@ public class FichierDaoImpl implements FichierDao<Fichier>{
 	private static final String SQL_SELECT_PAR_NOM = "SELECT * FROM Fichier WHERE Nom = ?";
 	private static final String SQL_CREER_FICHIER = "INSERT INTO Fichier VALUES(?, ?, ?) ";
 	private static final String SQL_EXIST_FICHIER = "SELECT * FROM Fichier WHERE Nom = ? ";
-	
+	private static final String SQL_CREER_DESCRIPTIF = "INSERT INTO DescriptionsFichiers (Nom, Catégorie, Valeur) VALUES (?,?,?)";
 	/*Constructeur*/
 	public FichierDaoImpl( DAOFactory daoFactory ) { 
         this.daoFactory = daoFactory;
@@ -25,6 +26,7 @@ public class FichierDaoImpl implements FichierDao<Fichier>{
 	@Override
 	public void creer( Fichier fichier ) throws DAOException{
 		
+		/*Création du fichier dans la base fichier*/
 		String 	nom 	= fichier.getNom();
 		String description = fichier.getDescription();
 		String type = fichier.getType();
@@ -37,7 +39,7 @@ public class FichierDaoImpl implements FichierDao<Fichier>{
  	    	connexion = daoFactory.getConnection();
  	    	preparedStatement = DAOFactory.initialisationRequetePreparee(connexion, SQL_CREER_FICHIER, false, nom, description, type);
  	    	statut = preparedStatement.executeUpdate();
- 	    	if (statut==0){System.out.println("crÃ©ation du fichier");};
+ 	    	if (statut==0){System.out.println("création du fichier");};
  	    } 	catch ( SQLException e ) {
          	throw new DAOException( e );
  		  	}
@@ -45,6 +47,33 @@ public class FichierDaoImpl implements FichierDao<Fichier>{
  				fermeturesSilencieuses( preparedStatement, connexion );
  				}  
 		
+    	 /*Création du descriptif dans la base DescriptionsFichiers*/
+    	 
+    	 try{
+    		 
+    	
+    	 if (fichier.getDescriptif().size() > 0){
+    		 connexion = daoFactory.getConnection();
+    		 preparedStatement = connexion.prepareStatement(SQL_CREER_DESCRIPTIF);
+    		 
+    		 for (Descriptif d : fichier.getDescriptif() ){
+    			 
+    			 /*Remplissage des champs de la requête*/
+    			 preparedStatement.setString ( 1, d.getNomFichier() );
+    			 preparedStatement.setString ( 2, d.getCategorie()  );
+    			 preparedStatement.setString ( 3, d.getValeur()     );
+    			
+    			 /*Execution de la requête*/
+    			 preparedStatement.executeUpdate();
+    		 }
+    	 }
+    	 }
+    	 catch (SQLException e){
+    		 throw new DAOException( e );
+    	 }
+    	 finally{
+    		 fermeturesSilencieuses( preparedStatement, connexion );
+    	 }
 	}
 	
 	@Override
@@ -56,12 +85,12 @@ public class FichierDaoImpl implements FichierDao<Fichier>{
     	
     	
     	try {
-            /* RÃ©cupÃ©ration d'une connexion depuis la Factory */
+            /* Récupération d'une connexion depuis la Factory */
             connexion = daoFactory.getConnection();
             preparedStatement = initialisationRequetePreparee( connexion, SQL_SELECT_PAR_NOM, false, nom );
             resultSet = preparedStatement.executeQuery();
             
-	            /* Parcours de la ligne de donnÃ©es de l'Ã©ventuel ResulSet retournÃ© */
+	            /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
 	            if ( resultSet.next() ) {
 	               fichier = new Fichier();
 	               fichier.setNom			( 	resultSet.getString  ( "Nom" )			);
@@ -85,7 +114,7 @@ public class FichierDaoImpl implements FichierDao<Fichier>{
 	    ResultSet resultSet = null;
 	    
 	    try {
-	    	/* RÃ©cupÃ©ration d'une connexion depuis la Factory */
+	    	/* Récupération d'une connexion depuis la Factory */
             connexion = daoFactory.getConnection();
             preparedStatement = initialisationRequetePreparee( connexion, SQL_EXIST_FICHIER, false, nom );
             resultSet = preparedStatement.executeQuery();

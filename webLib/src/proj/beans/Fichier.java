@@ -1,10 +1,13 @@
 package proj.beans;
 
+import java.util.List;
+
 public class Fichier {
 	
 	private String type;
 	private String description ;
 	private String nom;
+	private List<Descriptif> listeDescriptif; 
 	
 	public String getDescription() {
 		return description;
@@ -23,6 +26,15 @@ public class Fichier {
 	}
 	public void setType(String type) {
 		this.type = type;
-	} 
+	}
+	public List<Descriptif> getDescriptif() {
+		return listeDescriptif;
+	}
+	public void setDescriptif(List<Descriptif> descriptif) {
+		this.listeDescriptif = descriptif;
+	}
 
+	public void ajouterDescriptif(Descriptif descriptif){
+		this.listeDescriptif.add(descriptif);
+	}
 }

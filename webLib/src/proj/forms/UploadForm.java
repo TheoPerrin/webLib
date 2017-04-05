@@ -6,7 +6,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
 import proj.beans.Fichier;
+import proj.beans.Descriptif;
 import proj.dao.FichierDao;
 
 
@@ -27,7 +30,8 @@ public class UploadForm {
     private String              resultat;
     private Map<String, String> erreurs           = new HashMap<String, String>();
     
-    private FichierDao      fichierDao;
+    private FichierDao<Fichier>	   fichierDao;
+
     
     public String getResultat() {
         return resultat;
@@ -37,23 +41,24 @@ public class UploadForm {
         return erreurs;
     }
     
-    public UploadForm( FichierDao fichierDao ) {
+    public UploadForm( FichierDao<Fichier> fichierDao ) {
         this.fichierDao = fichierDao;
     }
+
     
+   
   
 	public Fichier enregistrerFichier( HttpServletRequest request, String chemin ) {
-        /* Initialisation du bean reprÃ©sentant un fichier */
+        /* Initialisation du bean représentant un fichier */
         Fichier fichier = new Fichier();
 
-        /* RÃ©cupÃ©ration du champ de description du formulaire et du Type de fichier*/
+        /* Récupération du champ de description du formulaire et du Type de fichier*/
         String description = getValeurChamp( request, CHAMP_DESCRIPTION );
-        String type = getValeurChamp(request, CHAMP_TYPE);
- 
+        String type = getValeurChamp(request, CHAMP_TYPE); 
  
         /*
-         * RÃ©cupÃ©ration du contenu du champ fichier du formulaire. Il faut ici
-         * utiliser la mÃ©thode getPart(), comme nous l'avions fait dans notre
+         * Récupération du contenu du champ fichier du formulaire. Il faut ici
+         * utiliser la méthode getPart(), comme nous l'avions fait dans notre
          * servlet auparavant.
          */
         String nomFichier = null;
@@ -61,64 +66,64 @@ public class UploadForm {
         try {
             Part part = request.getPart( CHAMP_FICHIER );
             /*
-             * Il faut dÃ©terminer s'il s'agit bien d'un champ de type fichier :
-             * on dÃ©lÃ¨gue cette opÃ©ration Ã  la mÃ©thode utilitaire
+             * Il faut déterminer s'il s'agit bien d'un champ de type fichier :
+             * on délègue cette opération à la méthode utilitaire
              * getNomFichier().
              */
             nomFichier = getNomFichier( part );
 
             /*
-             * Si la mÃ©thode a renvoyÃ© quelque chose, il s'agit donc d'un
+             * Si la méthode a renvoyé quelque chose, il s'agit donc d'un
              * champ de type fichier (input type="file").
              */
             if ( nomFichier != null && !nomFichier.isEmpty() ) {
                 /*
                  * Antibug pour Internet Explorer, qui transmet pour une
-                 * raison mystique le chemin du fichier local Ã  la machine
+                 * raison mystique le chemin du fichier local à la machine
                  * du client...
                  * 
                  * Ex : C:/dossier/sous-dossier/fichier.ext
                  * 
-                 * On doit donc faire en sorte de ne sÃ©lectionner que le nom
-                 * et l'extension du fichier, et de se dÃ©barrasser du
+                 * On doit donc faire en sorte de ne sélectionner que le nom
+                 * et l'extension du fichier, et de se débarrasser du
                  * superflu.
                  */
                 nomFichier = nomFichier.substring( nomFichier.lastIndexOf( '/' ) + 1 )
                         .substring( nomFichier.lastIndexOf( '\\' ) + 1 );
 
-                /* RÃ©cupÃ©ration du contenu du fichier */
+                /* Récupération du contenu du fichier */
                 contenuFichier = part.getInputStream();
 
             }
         } catch ( IllegalStateException e ) {
             /*
-             * Exception retournÃ©e si la taille des donnÃ©es dÃ©passe les limites
-             * dÃ©finies dans la section <multipart-config> de la dÃ©claration de
+             * Exception retournée si la taille des données dépasse les limites
+             * définies dans la section <multipart-config> de la déclaration de
              * notre servlet d'upload dans le fichier web.xml
              */
             e.printStackTrace();
-            setErreur( CHAMP_FICHIER, "Les donnÃ©es envoyÃ©es sont trop volumineuses." );
+            setErreur( CHAMP_FICHIER, "Les données envoyées sont trop volumineuses." );
         } catch ( IOException e ) {
             /*
-             * Exception retournÃ©e si une erreur au niveau des rÃ©pertoires de
-             * stockage survient (rÃ©pertoire inexistant, droits d'accÃ¨s
+             * Exception retournée si une erreur au niveau des répertoires de
+             * stockage survient (répertoire inexistant, droits d'accès
              * insuffisants, etc.)
              */
             e.printStackTrace();
             setErreur( CHAMP_FICHIER, "Erreur de configuration du serveur." );
         } catch ( ServletException e ) {
             /*
-             * Exception retournÃ©e si la requÃªte n'est pas de type
+             * Exception retournée si la requête n'est pas de type
              * multipart/form-data. Cela ne peut arriver que si l'utilisateur
              * essaie de contacter la servlet d'upload par un formulaire
-             * diffÃ©rent de celui qu'on lui propose... pirate ! :|
+             * différent de celui qu'on lui propose... pirate ! :|
              */
             e.printStackTrace();
             setErreur( CHAMP_FICHIER,
-                    "Ce type de requÃªte n'est pas supportÃ©, merci d'utiliser le formulaire prÃ©vu pour envoyer votre fichier." );
+                    "Ce type de requête n'est pas supporté, merci d'utiliser le formulaire prévu pour envoyer votre fichier." );
         }
 
-        /* Si aucune erreur n'est survenue jusqu'Ã  prÃ©sent */
+        /* Si aucune erreur n'est survenue jusqu'à présent */
         if ( erreurs.isEmpty() ) {
             /* Validation du champ de description. */
             try {
@@ -138,29 +143,46 @@ public class UploadForm {
             fichier.setNom( nomFichier );
         }
         
-        /*CrÃ©ation du fichier dans la base de donnÃ©e */
+        /*Récupération et enregistrement de la liste de descriptifs*/
+        
+        List<Descriptif> list = new ArrayList<Descriptif>();  
+        for(int i=1; i<6; i++){
+        	String I = Integer.toString(i);
+        	String J = I+"T";
+        	String categorie = getValeurChamp( request, I );
+        	String valeur = getValeurChamp(request, J);
+        	Descriptif d = new Descriptif(nomFichier, categorie, valeur);
+        	
+        	if(valeur!=null){
+        		list.add(d);
+        	}
+        }
+        fichier.setDescriptif(list);
+        
+        
+        /*Création du fichier dans la base de donnée */
         if ( erreurs.isEmpty() ) {
         	try {
         		fichierDao.creer(fichier);
-        	} catch (Exception e){ setErreur(CHAMP_FICHIER, "Erreur lors de la crÃ©ation dans la base de donnÃ©e ");
+        	} catch (Exception e){ setErreur(CHAMP_FICHIER, "Erreur lors de la création dans la base de donnée ");
         		}
         }
 
-        /* Si aucune erreur n'est survenue jusqu'Ã  prÃ©sent */
+        /* Si aucune erreur n'est survenue jusqu'à présent */
         if ( erreurs.isEmpty() ) {
-            /* Ã‰criture du fichier sur le disque */
+            /* Écriture du fichier sur le disque */
             try {
                 ecrireFichier( contenuFichier, nomFichier, chemin );
             } catch ( Exception e ) {
-                setErreur( CHAMP_FICHIER, "Erreur lors de l'Ã©criture du fichier sur le disque." );
+                setErreur( CHAMP_FICHIER, "Erreur lors de l'écriture du fichier sur le disque." );
             }
         }
         
-        /* Initialisation du rÃ©sultat global de la validation. */
+        /* Initialisation du résultat global de la validation. */
         if ( erreurs.isEmpty() ) {
-            resultat = "SuccÃ¨s de l'envoi du fichier.";
+            resultat = "Succès de l'envoi du fichier.";
         } else {
-            resultat = "Ã‰chec de l'envoi du fichier.";
+            resultat = "Échec de l'envoi du fichier.";
         }
 
         return fichier;
@@ -172,7 +194,7 @@ public class UploadForm {
     private void validationDescription( String description ) throws Exception {
         if ( description != null ) {
             if ( description.length() < 5 ) {
-                throw new Exception( "La phrase de description du fichier doit contenir au moins 5 caractÃ¨res." );
+                throw new Exception( "La phrase de description du fichier doit contenir au moins 5 caractères." );
             }
         } else {
             throw new Exception( "Merci d'entrer une phrase de description du fichier." );
@@ -180,23 +202,23 @@ public class UploadForm {
     }
 
     /*
-     * Valide le fichier envoyÃ©.
+     * Valide le fichier envoyé.
      */
     private void validationFichier( String nomFichier, InputStream contenuFichier ) throws Exception {
         if ( nomFichier == null || contenuFichier == null ) {
-            throw new Exception( "Merci de sÃ©lectionner un fichier Ã  envoyer." );
+            throw new Exception( "Merci de sélectionner un fichier à envoyer." );
         }
     }
 
     /*
-     * Ajoute un message correspondant au champ spÃ©cifiÃ© Ã  la map des erreurs.
+     * Ajoute un message correspondant au champ spécifié à la map des erreurs.
      */
     private void setErreur( String champ, String message ) {
         erreurs.put( champ, message );
     }
 
     /*
-     * MÃ©thode utilitaire qui retourne null si un champ est vide, et son contenu
+     * Méthode utilitaire qui retourne null si un champ est vide, et son contenu
      * sinon.
      */
     private static String getValeurChamp( HttpServletRequest request, String nomChamp ) {
@@ -209,34 +231,34 @@ public class UploadForm {
     }
 
     /*
-     * MÃ©thode utilitaire qui a pour unique but d'analyser l'en-tÃªte
-     * "content-disposition", et de vÃ©rifier si le paramÃ¨tre "filename" y est
-     * prÃ©sent. Si oui, alors le champ traitÃ© est de type File et la mÃ©thode
+     * Méthode utilitaire qui a pour unique but d'analyser l'en-tête
+     * "content-disposition", et de vérifier si le paramètre "filename" y est
+     * présent. Si oui, alors le champ traité est de type File et la méthode
      * retourne son nom, sinon il s'agit d'un champ de formulaire classique et
-     * la mÃ©thode retourne null.
+     * la méthode retourne null.
      */
     private static String getNomFichier( Part part ) {
-        /* Boucle sur chacun des paramÃ¨tres de l'en-tÃªte "content-disposition". */
+        /* Boucle sur chacun des paramètres de l'en-tête "content-disposition". */
         for ( String contentDisposition : part.getHeader( "content-disposition" ).split( ";" ) ) {
-            /* Recherche de l'Ã©ventuelle prÃ©sence du paramÃ¨tre "filename". */
+            /* Recherche de l'éventuelle présence du paramètre "filename". */
             if ( contentDisposition.trim().startsWith( "filename" ) ) {
                 /*
-                 * Si "filename" est prÃ©sent, alors renvoi de sa valeur,
-                 * c'est-Ã -dire du nom de fichier sans guillemets.
+                 * Si "filename" est présent, alors renvoi de sa valeur,
+                 * c'est-à-dire du nom de fichier sans guillemets.
                  */
                 return contentDisposition.substring( contentDisposition.indexOf( '=' ) + 1 ).trim().replace( "\"", "" );
             }
         }
-        /* Et pour terminer, si rien n'a Ã©tÃ© trouvÃ©... */
+        /* Et pour terminer, si rien n'a été trouvé... */
         return null;
     }
 
     /*
-     * MÃ©thode utilitaire qui a pour but d'Ã©crire le fichier passÃ© en paramÃ¨tre
-     * sur le disque, dans le rÃ©pertoire donnÃ© et avec le nom donnÃ©.
+     * Méthode utilitaire qui a pour but d'écrire le fichier passé en paramètre
+     * sur le disque, dans le répertoire donné et avec le nom donné.
      */
     private void ecrireFichier( InputStream contenu, String nomFichier, String chemin ) throws Exception {
-        /* PrÃ©pare les flux. */
+        /* Prépare les flux. */
         BufferedInputStream entree = null;
         BufferedOutputStream sortie = null;
         try {
@@ -246,7 +268,7 @@ public class UploadForm {
                     TAILLE_TAMPON );
 
             /*
-             * Lit le fichier reÃ§u et Ã©crit son contenu dans un fichier sur le
+             * Lit le fichier reçu et écrit son contenu dans un fichier sur le
              * disque.
              */
             byte[] tampon = new byte[TAILLE_TAMPON];

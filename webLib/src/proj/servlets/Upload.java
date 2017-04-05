@@ -17,16 +17,16 @@ import proj.forms.UploadForm;
 
 public class Upload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String VUE = "/WEB-INF/uploadFichier.jsp";
+	public static final String VUE = "/WEB-INF/UploadBonjour.jsp";
 	public static final String ATT_FICHIER = "fichier";
 	public static final String ATT_FORM    = "form";	
 	public static final String CHEMIN        = "chemin";
 	public static final String CONF_DAO_FACTORY = "daofactory";
 	
-	private FichierDao     fichierDao;
+	private FichierDao<Fichier>     fichierDao;
 	
 	public void init() throws ServletException {
-        /* RÃ©cupÃ©ration d'une instance de notre DAO Fichier */
+        /* Récupération d'une instance de notre DAO Fichier */
         this.fichierDao = ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getFichierDao();
     }
 
@@ -37,22 +37,26 @@ public class Upload extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*
-         * Lecture du paramÃ¨tre 'chemin' passÃ© Ã  la servlet via la dÃ©claration
+         * Lecture du paramètre 'chemin' passé à la servlet via la déclaration
          * dans le web.xml
          */
         String chemin = this.getServletConfig().getInitParameter( CHEMIN );
 
-        /* PrÃ©paration de l'objet formulaire */
+        /* Préparation de l'objet formulaire */
         UploadForm form = new UploadForm( fichierDao );
 
-        /* Traitement de la requÃªte et rÃ©cupÃ©ration du bean en rÃ©sultant */
+        /* Traitement de la requête et récupération du bean en résultant */
         Fichier fichier = form.enregistrerFichier( request, chemin );
 
         /* Stockage du formulaire et du bean dans l'objet request */
         request.setAttribute( ATT_FORM, form );
         request.setAttribute( ATT_FICHIER, fichier );
+        
+        System.out.println(fichier.getType());
+        
 
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        	this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+
     }
 
 }

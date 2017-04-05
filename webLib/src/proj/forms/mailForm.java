@@ -19,7 +19,7 @@ public class mailForm {
 	private final String 	PASSWORD = "LespertPerrin"; 
 	private final String 	FROM = "theoweblib@gmail.com"; 
 	private final String 	TO = "theoperrin@ymail.com";
-	private final String 	SUBJECT = "Demande de clÃ© d'activation";
+	private final String 	SUBJECT = "Demande de clé d'activation";
 	
 	private String              resultat;
     private Map<String, String> erreurs      = new HashMap<String, String>();
@@ -42,7 +42,7 @@ public class mailForm {
 	}
 	
 	public void envoyer(HttpServletRequest request){
-		/*RÃ©cupÃ©ration des champs du formulaire de demande de clÃ© */
+		/*Récupération des champs du formulaire de demande de clé */
 		String nom = request.getParameter( "name" );
 		String destinataire = request.getParameter("email");
 		String message = request.getParameter( "message" );
@@ -62,7 +62,7 @@ public class mailForm {
 		if (erreurs.isEmpty()){
 			try{	
 				email.setHostName(HOSTNAME);
-				email.setSmtpPort(465);
+				email.setSmtpPort(PORT);
 				email.setAuthenticator(defaultAuthenticator);
 				email.setSSLOnConnect(true);
 				email.setFrom(FROM);
@@ -70,7 +70,7 @@ public class mailForm {
 				email.setMsg(mail);
 				email.addTo(TO);
 				email.send(); 	
-				resultat = "Votre mail Ã  bien Ã©tÃ© envoyÃ©, nous essayons de vous rÃ©pondre au plus vite";
+				resultat = "Votre mail à bien été envoyé, nous essayons de vous répondre au plus vite";
 			} catch(EmailException e){
 				e.printStackTrace(); resultat = "Echec de l'envoi du mail";
 			  }
