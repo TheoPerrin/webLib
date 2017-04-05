@@ -49,7 +49,7 @@
                         <a href="#nouveautes">Nouveautés</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="video">Vidéos</a>
+                        <a href="Video">Vidéos</a>
                     </li>
                     <li class="page-scroll">
                         <a href="photo">Photos</a>
@@ -58,7 +58,7 @@
                         <a href="musique">Musiques</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="upload">Partager</a>
+                        <a href="UploadRedirection">Partager</a>
                     </li>
                     <li class="page-scroll">
                         <a href="deconnexion"><img class="img-responsive" src="image/logout2.jpg" width="40" height="40" alt="" title="se deconnecter"></a>

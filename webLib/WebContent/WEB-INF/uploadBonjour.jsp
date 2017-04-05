@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Bonjour</title>
+<title>uploadBonjour</title>
 
 <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="video">Vidéos</a>
+                        <a href="Video">Vidéos</a>
                     </li>
                     <li class="page-scroll">
                         <a href="photo">Photos</a>

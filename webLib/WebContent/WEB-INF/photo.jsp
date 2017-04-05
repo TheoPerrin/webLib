@@ -43,7 +43,7 @@
                         <a href="fiche"><img class="img-responsive" src="image/profile5.png" width="40" height="40" alt="" title="profile"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="video">Vidéos</a>
+                        <a href="Video">Vidéos</a>
                     </li>
                     <li class="page-scroll">
                         <a href="photo">Photos</a>
@@ -52,7 +52,7 @@
                         <a href="musique">Musiques</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="upload">Partager</a>
+                        <a href="uploadRedirection">Partager</a>
                     </li>
                     <li class="page-scroll">
                         <a href="deconnexion"><img class="img-responsive" src="image/logout2.jpg" width="40" height="40" alt="" title="se deconnecter"></a>

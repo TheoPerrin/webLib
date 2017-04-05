@@ -45,7 +45,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="video">Vidéos</a>
+                        <a href="Video">Vidéos</a>
                     </li>
                     <li class="page-scroll">
                         <a href="photo">Photos</a>

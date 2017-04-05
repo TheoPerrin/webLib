@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-public class video extends HttpServlet {
+public class Video extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String VUE = "/WEB-INF/Video.jsp";
+	public static final String VUE = "/WEB-INF/video.jsp";
        
 
 

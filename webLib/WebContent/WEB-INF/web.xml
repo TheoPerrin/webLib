@@ -61,12 +61,12 @@
     <url-pattern>/modifiFiche</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>video</servlet-name>
-    <servlet-class>proj.servlets.video</servlet-class>
+    <servlet-name>Video</servlet-name>
+    <servlet-class>proj.servlets.Video</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>video</servlet-name>
-    <url-pattern>/video</url-pattern>
+    <servlet-name>Video</servlet-name>
+    <url-pattern>/Video</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>Photo</servlet-name>
